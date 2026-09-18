@@ -1,1 +1,434 @@
-file:///D:/GD/8%20Downloads/gemini-code-1789711975532.html
+HTML
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goyen & Mecair Filter Cleaning Troubleshooting Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #004b87;
+            --primary-dark: #003360;
+            --accent: #00a8cc;
+            --bg: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #6c757d;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+            --success: #28a745;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -20px auto 0;
+            padding: 0 15px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .search-box i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1rem;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .checklist-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--accent);
+        }
+
+        .checklist-card h2 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .step-item {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .step-icon {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .step-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .case-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+        }
+
+        .case-header {
+            padding: 15px 20px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-1 { background-color: var(--danger); }
+        .case-2 { background-color: #d97706; }
+        .case-3 { background-color: #2563eb; }
+        .case-4 { background-color: var(--success); }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            font-weight: 600;
+            width: 30%;
+        }
+
+        td:nth-child(2) {
+            width: 35%;
+            color: #475569;
+        }
+
+        td:nth-child(3) {
+            width: 35%;
+            background-color: #fafafa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .safety-card {
+            background: #fffbeeb3;
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .safety-card h3 {
+            color: #b45309;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .safety-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .safety-card li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.92rem;
+            color: #78350f;
+        }
+
+        .safety-card li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #d97706;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.4rem; }
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr { border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+            td { width: 100% !important; padding: 8px 15px; border: none; }
+            td:nth-child(1) { font-weight: 600; color: var(--primary); font-size: 1rem; padding-top: 12px; }
+            td:nth-child(2)::before { content: "สาเหตุ: "; font-weight: 600; color: var(--text-main); }
+            td:nth-child(3)::before { content: "วิธีแก้: "; font-weight: 600; color: var(--text-main); }
+            td:nth-child(3) { background: transparent; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fa-solid fa-wrench"></i> คู่มือแก้ไขปัญหาระบบทำความสะอาดไส้กรอง</h1>
+        <p>Pulse Jet Dust Collector Troubleshooting — Goyen & Mecair (Pentair)</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="พิมพ์ค้นหาอาการเสีย เช่น 'ลมรั่ว', 'ไม่ยิงพัลส์', 'DP สูง'...">
+        </div>
+
+        <div class="checklist-card">
+            <h2><i class="fa-solid fa-list-check"></i> 3 ขั้นตอนเช็คไวหน้างาน (Quick Checklist)</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-ear-listen"></i></div>
+                    <div class="step-content">
+                        <h4>1. ฟัง (Listen)</h4>
+                        <p>สังเกตเสียงลมรั่วฟ่อๆ ที่ตัววาล์วหรือสายสัญญาณ Pilot เพื่อระบุจุดรั่วไหล</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-eye"></i></div>
+                    <div class="step-content">
+                        <h4>2. ดู (Look)</h4>
+                        <p>เช็คค่าความดันต่าง (DP) บนหน้าปัด หากสูงผิดปกติแสดงว่าระบบทำความสะอาดมีปัญหา</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="step-content">
+                        <h4>3. วัด (Measure)</h4>
+                        <p>วัดแรงดันไฟฟ้าจ่ายไปคอยล์โซลินอยด์วาล์วจาก Controller ว่ามาตามรอบหรือไม่</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-card searchable-item">
+            <div class="case-header case-1">
+                <i class="fa-solid fa-circle-exclamation"></i> เคส 1: ลมรั่ว / แรงดันลมในถังตก (Pressure Loss & Leakage)
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>อาการที่พบ (Symptom)</th>
+                            <th>สาเหตุที่เป็นไปได้ (Possible Cause)</th>
+                            <th>แนวทางการแก้ไข (Remedy)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>ลมรั่วออกทางท่อยิงพัลส์ตลอดเวลา</b></td>
+                            <td>• แผ่นไดอะแฟรม (Diaphragm) ฉีกขาด/เสื่อมสภาพ<br>• มีเศษสิ่งสกปรกขัดหน้าสัมผัสไดอะแฟรม</td>
+                            <td>1. ถอดฝาครอบวาล์วตรวจเช็คแผ่นไดอะแฟรม<br>2. ทำความสะอาดสิ่งสกปรกภายในตัวเรือนวาล์ว<br>3. เปลี่ยนชุดซ่อมไดอะแฟรม (Repair Kit)</td>
+                        </tr>
+                        <tr>
+                            <td><b>ลมรั่วที่ชุดโซลินอยด์ / Pilot</b></td>
+                            <td>• แกนซีล (Plunger/Armature) ค้างหรือ O-Ring ชำรุด<br>• รูระบาย (Bleed Port) อุดตัน</td>
+                            <td>1. ถอดทำความสะอาดแกนพลองเจอร์และสปริง<br>2. เช็ค O-Ring และเปลี่ยนชุดซีล Pilot<br>3. แยงทำความสะอาดรู Bleed Port</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="case-card searchable-item">
+            <div class="case-header case-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> เคส 2: วาล์วไม่เปิด / ไม่ยิงพัลส์ (Valve Does Not Open)
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>อาการที่พบ (Symptom)</th>
+                            <th>สาเหตุที่เป็นไปได้ (Possible Cause)</th>
+                            <th>แนวทางการแก้ไข (Remedy)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>คอยล์ทำงาน แต่วาล์วไม่เปิดยิงลม</b></td>
+                            <td>• รูระบายสัญญาณอุดตัน<br>• สปริงไดอะแฟรมแข็งหรือหัก<br>• แรงดันลมจ่าย (Header Pressure) ต่ำเกินไป</td>
+                            <td>1. ตรวจสอบและทำความสะอาดทางเดินลมระบาย<br>2. ตรวจเช็กลมจ่ายเข้าถังต้องได้ตามสเปก (เช่น 4-6 bar)<br>3. เปลี่ยนชุดสปริง/ไดอะแฟรม</td>
+                        </tr>
+                        <tr>
+                            <td><b>วาล์วเงียบ ไม่ตอบสนอง</b></td>
+                            <td>• คอยล์ไฟฟ้าขาด/ไหม้<br>• สายไฟหลุด หรือตู้ควบคุมไม่จ่ายสัญญาณ</td>
+                            <td>1. วัดค่าความต้านทาน (Ohm) ของคอยล์โซลินอยด์<br>2. ตรวจสอบสายไฟและสัญญาณ Output จาก Controller</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="case-card searchable-item">
+            <div class="case-header case-3">
+                <i class="fa-solid fa-rotate-right"></i> เคส 3: วาล์วยิงลมค้าง / ยิงไม่หยุด (Valve Stuck Open)
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>อาการที่พบ (Symptom)</th>
+                            <th>สาเหตุที่เป็นไปได้ (Possible Cause)</th>
+                            <th>แนวทางการแก้ไข (Remedy)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>วาล์วยิงลมต่อเนื่องไม่ยอมปิด</b></td>
+                            <td>• แผ่นไดอะแฟรมติดค้าง<br>• รู Bleed Port อุดตันทำให้สร้างแรงดันปิดไม่ได้<br>• เศษสิ่งสกปรกติดขัดที่ Pilot</td>
+                            <td>1. ถอดตรวจสอบรู Bleed Port ว่าอุดตันหรือไม่<br>2. ทำความสะอาดภายในตัวเรือนและแผ่นไดอะแฟรม<br>3. ตรวจสอบแรงลมจ่ายว่าสม่ำเสมอหรือไม่</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="case-card searchable-item">
+            <div class="case-header case-4">
+                <i class="fa-solid fa-filter"></i> เคส 4: ประสิทธิภาพการทำความสะอาดต่ำ (Insufficient Cleaning)
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>อาการที่พบ (Symptom)</th>
+                            <th>สาเหตุที่เป็นไปได้ (Possible Cause)</th>
+                            <th>แนวทางการแก้ไข (Remedy)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>ค่า Differential Pressure (DP) สูง ถุงกรองตันไว</b></td>
+                            <td>• ระยะเวลาการยิงพัลส์ (Pulse Time) สั้น/ยาวไป<br>• แรงดันลมยิงพัลส์ไม่เพียงพอ<br>• ถุงกรองหมดอายุการใช้งาน</td>
+                            <td>1. ปรับตั้งเวลา On-Time / Off-Time ที่ตู้ Controller<br>2. ตรวจสอบแรงดันลมจ่ายและขนาดท่อ Blowpipe<br>3. ตรวจสอบสภาพถุงกรอง/ตลับกรอง</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="safety-card">
+            <h3><i class="fa-solid fa-shield-halved"></i> ข้อควรระวังและความปลอดภัยในการซ่อมบำรุง</h3>
+            <ul>
+                <li><b>Lockout / Tagout:</b> ตัดกระแสไฟฟ้าและตัดระบบลมจ่ายก่อนทำการถอดรื้อวาล์วทุกครั้ง</li>
+                <li><b>Depressurize:</b> ระบายแรงดันลมออกจากถังเก็บลม (Air Header Tank) ให้หมดก่อนเริ่มงาน</li>
+                <li><b>Cleanliness:</b> ระวังอย่าให้เศษฝุ่นหรือเศษโลหะหลุดเข้าไปในตัววาล์วขณะประกอบกลับ</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        function filterContent() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('searchable-item');
+
+            for (let i = 0; i < cards.length; i++) {
+                let cardText = cards[i].innerText.toLowerCase();
+                if (cardText.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
